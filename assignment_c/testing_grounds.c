@@ -5,6 +5,13 @@
 #define pi 3.1415
 #define DATAFILE "data.txt"
 /*===========================================================================================================================================================================*/
+// DECLARE FUNCTIONS BEFORE MAIN TO AVOID CONFUSION OF THE COMPILER
+int option_1_calculation(double s0, double s1, double s2, double s3, double s4, double s5, double* s6, double* s7, double* s8);
+int option_2_calculation(double s0, double s1, double s2, double s3, double s4, double s5, double s6, double s7, double s8, double vector_c, double vector_d, double vector_r, double theta, double alpha, double intermediate_vector_variable);
+int option_3_calculation(double s0, double s1, double s2, double s3, double s4, double s5, double s6, double s7, double s8, double discriminant, double root_intermediate_variable, double complex *quadratic_root_1, double complex *quadratic_root_2);
+int option_4_calculation(double s0, double s1, double s2, double s3, double s4, double s5, double s6, double s7, double s8);
+int file_read_analysis(double s0, double s1, double s2, double s3, double s4, double s5, double s6, double s7, double s8);
+/*===========================================================================================================================================================================*/
 int main()
 {
 
@@ -26,6 +33,7 @@ int main()
 /*===========================================================================================================================================================================*/
 // INTERACTIVE MENU FOR OPTIONS TEXT
   do {
+        printf("\n-------------------------------\n");
         printf("\nInteractive Menu:\n");
         printf("1. Additional variable calculation\n");
         printf("2. Vector calculation\n");
@@ -33,6 +41,7 @@ int main()
         printf("4. Matrix calculation\n");
         printf("5. File read analyze\n");
         printf("9. Exit\n");
+        printf("-------------------------------\n");
         printf("OptionNo: ");
         scanf("%d", &option);
 /*===========================================================================================================================================================================*/
@@ -40,25 +49,30 @@ int main()
         switch(option) {
 // OPTION 1 - DETERMINING S6, S7 AND S8 VARIABLES
             case 1:
+                printf("-------------------------------");
                 option_1_calculation(s0, s1, s2, s3, s4, s5, &s6, &s7, &s8);
                 break;
 // OPTION 2 - VECTOR AND ANGLE OPERATIONS
             case 2:
+                printf("-------------------------------");
+                option_1_calculation(s0, s1, s2, s3, s4, s5, &s6, &s7, &s8);
                 option_2_calculation(s0, s1, s2, s3, s4, s5, s6, s7, s8, vector_c, vector_d, vector_r, theta, alpha, intermediate_vector_variable);
                 break;
 // OPTION 3 - QUADRATIC FUNCTION ROOT CALCULATION
             case 3:
+                printf("-------------------------------");
                 option_3_calculation(s0, s1, s2, s3, s4, s5, s6, s7, s8, discriminant, root_intermediate_variable, &quadratic_root_1, &quadratic_root_2);
                     printf("\nRoot 1: %.2f%+.2fi\n", creal(quadratic_root_1), cimag(quadratic_root_1)); //PRINT GOES OUTSIDE THE FUNCTION DUE TO CLASHES WITH DEFINING THE USED VARIABLES W/ POINTERS
                     printf("Root 2: %.2f%+.2fi\n", creal(quadratic_root_2), cimag(quadratic_root_2)); //PRINT GOES OUTSIDE THE FUNCTION DUE TO CLASHES WITH DEFINING THE USED VARIABLES W/ POINTERS
-                    printf("-------------------------------");
                 break;
 // OPTION 4 - MATRIX CELL SUBSTITUTION
             case 4:
+                printf("-------------------------------\n");
                 option_4_calculation(s0, s1, s2, s3, s4, s5, s6, s7, s8);
                 break;
 // FILE READ AND ANALYSIS, DONE AS A FUNCTION TO MAKE THE CONSOLE CLEANER
             case 5:
+                printf("-------------------------------");
                 file_read_analysis(s0, s1, s2, s3, s4, s5, s6, s7, s8);
                 break;
 // EXIT OPTION - CLOSES THE PROGRAM
@@ -81,7 +95,6 @@ int option_1_calculation(double s0, double s1, double s2, double s3, double s4, 
     *s7 = (s0 + s1 + s2 + s3 + s4 + s5) / 6; // AVERAGE
     *s8 = pow(s5, 1.25); // MATH.H POWER FUNCTION
     printf("\ns6 = %lf \ns7 = %lf \ns8 = %lf\n", *s6, *s7, *s8);
-    printf("-------------------------------");
     return 0;
 }
 
@@ -104,7 +117,6 @@ int option_2_calculation(double s0, double s1, double s2, double s3, double s4, 
     alpha = asin((sin(theta) * vector_d) / vector_r); // DETERMINING ALPHA (ANGLE BETWEEN R AND C)
     alpha = (alpha * 180) / pi;
     printf("\nalpha = %lf\n", alpha);
-    printf("-------------------------------");
     return 0;
 }
 
@@ -138,7 +150,6 @@ int option_4_calculation(double s0, double s1, double s2, double s3, double s4, 
     double new_userdef_variable;
     double arr[3][3] = {{s0, s1, s2}, {s3, s4, s5}, {s6, s7, s8}};
 // CONVERTING ARRAY INTO A 3X3 MATRIX
-    printf("-------------------------------\n");
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -167,6 +178,7 @@ int option_4_calculation(double s0, double s1, double s2, double s3, double s4, 
     {
         printf("Invalid indices provided, nothing changed.\n");
     }
+    printf("You changed [%d][%d] to %lf\n", user_column, user_row, new_userdef_variable);
 // PRINT OUT THE UPDATED MATRIX
     for (int i = 0; i < 3; i++)
     {
@@ -176,8 +188,6 @@ int option_4_calculation(double s0, double s1, double s2, double s3, double s4, 
         }
         printf("\n");
     }
-    printf("-------------------------------");
-
     return 0;
 }
 
@@ -237,7 +247,6 @@ int file_read_analysis(double s0, double s1, double s2, double s3, double s4, do
     printf("The array contains %d odd values.\n", odd_nums);
     printf("Negative sum: %d\n", negative_sum);
     printf("Negative sum cubed: %d\n", negative_sum_cubed);
-    printf("-------------------------------");
     
     return 0;
 }
