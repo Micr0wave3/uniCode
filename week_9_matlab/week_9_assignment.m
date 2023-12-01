@@ -51,27 +51,27 @@ end
 
 
 %task 18
-format long; % turns on long display format
+format long;
 
-a = 2; % initial value of a
+a = 2
 
 for i = 1:8
-    a = 0.5*a + 1/a; % update the value of a
+    a = 0.5*a + 1/a;
     disp(a);
 end
 %a approaches the limit of sqrt(2)
 
 %task 19
-count = 0; % counter for number of negative numbers entered
-negatives = []; % array to store negative numbers
+count = 0;
+negatives = [];
 
 while count < 10
-    num = input('Enter a negative number: '); % ask user to enter a number
-    if num < 0 % check if the number is negative
-        count = count + 1; % increment counter
-        negatives = [negatives, num]; % add the negative number to the array
+    num = input('Enter a negative number: ');
+    if num < 0
+        count = count + 1;
+        negatives = [negatives, num];
     else
-        disp('INCOMPREHENSIBLY LOUD BUZZER SOUND'); % display error message for invalid input
+        disp('INCOMPREHENSIBLY LOUD BUZZER SOUND');
     end
 end
 
