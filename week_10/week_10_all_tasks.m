@@ -175,7 +175,7 @@
 % years = 1790:2000;
 % 
 % P = 197273000 ./ (1 + exp(-0.03134 * (years - 1913.25)));
-% %????? WHY NUMBER SO BIG????
+%????? WHY NUMBER SO BIG????
 % figure;
 % plot(years, P, 'b');
 % 
