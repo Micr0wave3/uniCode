@@ -1,8 +1,11 @@
 function [edges, area] = calculateTriangleMetrics(x1, y1, x2, y2, x3, y3)
     % Calculate the distances between the vertices
-    a = sqrt((x2-x1)^2 + (y2-y1)^2);
-    b = sqrt((x3-x2)^2 + (y3-y2)^2);
-    c = sqrt((x1-x3)^2 + (y1-y3)^2);
+    a_interm = (x2-x1) * (x2-x1) + (y2-y1) * (y2-y1);
+    b_interm = (x3-x2) * (x3-x2) + (y3-y2) * (y3-y2);
+    c_interm = (x1-x3) * (x1-x3) + (y1-y3) * (y1-y3);
+    a = sqrt(a_interm);
+    b = sqrt(b_interm);
+    c = sqrt(c_interm);
     
     % Store the edges in an array
     edges = [a, b, c];
